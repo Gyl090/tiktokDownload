@@ -133,7 +133,7 @@ class Download_task(QThread):
         video_len = int(video_response.headers.get('Content-Length'))
         video_content = video_response.iter_content(100)
 
-        with open(f'./videos/{title}.mp4', 'wb') as vf:
+        with open(os.path.join(BASE_DIR, f'./videos/{title}.mp4'), 'wb') as vf:
             cur_down = 0
             try:
                 for item in video_content:
@@ -153,8 +153,9 @@ class Download_task(QThread):
 
 if __name__ == '__main__':
     BASE_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
-    if not os.path.exists(BASE_DIR + 'videos'):
-        os.mkdir(BASE_DIR + 'videos')
+    print(BASE_DIR)
+    if not os.path.exists(os.path.join(BASE_DIR, './videos')):
+        os.mkdir(os.path.join(BASE_DIR, './videos'))
 
     app = QApplication(sys.argv)
 
