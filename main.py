@@ -1,3 +1,4 @@
+import os.path
 import re
 import sys
 
@@ -151,6 +152,10 @@ class Download_task(QThread):
 
 
 if __name__ == '__main__':
+    BASE_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
+    if not os.path.exists(BASE_DIR + 'videos'):
+        os.mkdir(BASE_DIR + 'videos')
+
     app = QApplication(sys.argv)
 
     main_widget = MainWidget()
