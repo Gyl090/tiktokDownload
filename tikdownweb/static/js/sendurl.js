@@ -17,9 +17,3 @@ function postUrl(){
     })
 }
 
-function clear(){
-    console.log("清空内容")
-    const url = document.getElementById("url");
-    console.log(url);
-    url.value = "";
-}

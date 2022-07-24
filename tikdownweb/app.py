@@ -84,4 +84,4 @@ if __name__ == '__main__':
     print(BASE_DIR)
     if not os.path.exists(os.path.join(BASE_DIR, 'videos')):
         os.mkdir(os.path.join(BASE_DIR, 'videos'))
-    app.run(host='127.0.0.1', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
