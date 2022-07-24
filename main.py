@@ -1,6 +1,7 @@
 import os.path
 import re
 import sys
+import time
 
 import requests
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
@@ -124,6 +125,8 @@ class Download_task(QThread):
         r_json = requests.get(url=base_url + vid, headers=self.headers).json()
         # print(type(r_json), r_json)
         title = r_json['item_list'][0].get('desc')  # 获取视频的简介
+        if not title:
+            title = time.strftime('%Y-%m-%d-%p-%I:%M:%S')
         url3 = r_json.get('item_list')[0].get('video').get('play_addr').get('url_list')[0]
         final_url = url3.replace('playwm', 'play')
         print('最终的无水印地址为', final_url)
